@@ -4,20 +4,39 @@ import {toXMLDoc,XML,transaction} from './xml';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
-import * as xmlbuilder from 'xmlbuilder'; 
+import * as xmlbuilder from 'xmlbuilder';
+
 
 @Injectable()
-export class TestService{
+export class BackendService{
     constructor(private http:Http){}
+
+    private buildOptions(){
+        let options = new RequestOptions();
+        options.headers = new Headers();
+        options.headers.append("Content-Type","text/xml");
+        options.headers.append("Authorization","Basic " + btoa("admin:SlithyToves"));
+        return options;
+    }
+
+    publish(body){
+        let s = xmlbuilder.create('asd');
+        return this.http.post(environment.api +"publish",body,this.buildOptions())
+            .map(i=>i.text());
+    }
+
+
+
     runTest(){
         this.testNew();
+        this.save();
     }
     save(){
         let options = new RequestOptions();
         options.headers = new Headers();
         options.headers.append("Content-Type","text/xml");
         options.headers.append("Authorization","Basic " + btoa("admin:SlithyToves"));
-        let text = new XMLSerializer().serializeToString(this.testXML())
+        let text = transaction();
         this.http.post(environment.api +"publish",text,options)
             .map(i=>i.text())
             .subscribe(i=>console.log(i));

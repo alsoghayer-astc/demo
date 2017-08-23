@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {TestService} from './service';
+import {TransactionService} from './service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'INdicio';
   a:XMLSerializer;
   b:XMLDocument;
-  constructor(private test:TestService){
-    test.runTest();
+  constructor(private test:TransactionService){
+    test.insert('urn:auth:def:objectType:222:Vehicle3','SomeName',[]);
   }
 }

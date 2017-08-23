@@ -14,15 +14,19 @@ export const XML = `
     </Transaction>
 `;
 
-function prepareRoot(){
-  let root = xmlbuilder.create("Transaction");
-  root.att('xmlns','http://www.opengis.net/cat/csw/2.0.2');
-  root.att('xmlns:csw','http://www.opengis.net/cat/csw/2.0.2'); 
-  root.att('xmlns:rim','urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0'); 
-  root.att('xmlns:wrs','http://www.opengis.net/cat/wrs/1.0'); 
-  root.att('xmlns:gml','http://www.opengis.net/gml/3.2'); 
-  root.att('xmlns:ogc','http://www.opengis.net/ogc'); 
-  root.att('xmlns:xlink','http://www.w3.org/1999/xlink');
+export function prepareRoot(){
+
+  let root = xmlbuilder.create("Transaction")
+  root.att('xmlns','http://www.opengis.net/cat/csw/2.0.2')
+    .att('xmlns:csw','http://www.opengis.net/cat/csw/2.0.2')
+    .att('xmlns:rim','urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0')
+    .att('xmlns:wrs','http://www.opengis.net/cat/wrs/1.0')
+    .att('xmlns:gml','http://www.opengis.net/gml/3.2')
+    .att('xmlns:ogc','http://www.opengis.net/ogc')
+    .att('xmlns:xlink','http://www.w3.org/1999/xlink')
+    .att('service','CSW')
+    .att('version','2.0.2')
+    .att('verboseResponse','true');
   return root;
 }
 
@@ -38,7 +42,6 @@ function prepareSlots(slots:{name:string,type:string,value:any}[]){
   return xmlSlots;
 }
 
-
 export function transaction(){
   let objectType = "urn:ogc:def:ebRIM-ObjectType:OGC:Dataset";
   let root = prepareRoot();
@@ -49,14 +52,11 @@ export function transaction(){
     {name:'slotName',type:'String',value:'some Slot Value'}
   ];
 
-  
   let slots = prepareSlots(tempSlots);
   
   for(let s of slots){
-
     console.log(s.toString())
   }
-  
   return root.toString();
 }
 
