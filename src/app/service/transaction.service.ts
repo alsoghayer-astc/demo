@@ -13,8 +13,8 @@ export class TransactionService{
         let transaction = prepareRoot();
         let insert = transaction.ele('Insert');
         let object = this.addExtrinsicObject(insert,objectType);
-        this.addName(object,name);
         this.addSlot(object,'point','position',{latitude:24.724068,longitude:46.669922});
+        this.addName(object,name);        
         this.backend.publish(transaction.toString())
             .subscribe(i=>console.log(i));
     }
@@ -32,10 +32,8 @@ export class TransactionService{
     }
     
     private addSlot(parent,type,name,value){
-        parent.ele('rim:Slot').att('name',name)
-        let anyValue = parent.ele('wrs:ValueList');
         let point = new GM_PointSlot(value);
-        point.toXML(anyValue);
+        point.toXML(parent,name);
     }
 
     private addName(parent,name){

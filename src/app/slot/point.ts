@@ -23,9 +23,10 @@ export class GM_PointSlot implements Slot{
     toXML(parent:XMLElementOrXMLNode,name:string){
         parent
             .ele('rim:Slot').att('slotType',SLOT_TYPE).att('name',name)
+            .ele('wrs:ValueList')
             .ele('wrs:AnyValue')
             .ele(SLOT_TAG)
-            .att('id','urn_uuid_d7306bc0-6391-11e4-9803-0800200c9a66')
+            .att('gml:id','urn_uuid_d7306bc0-6391-11e4-9803-0800200c9a66')
             .att('srsName','urn:ogc:def:crs:EPSG::4326')
                 .ele('gml:pos',`${this.latitude} ${this.longitude}`);
     }
