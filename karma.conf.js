@@ -22,6 +22,10 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
+    files:[
+      {pattern: 'node_modules/@angular/**/*', included: false, watched: false},
+      {pattern: 'node_modules/rxjs/**/*', included: false, watched: false}
+    ],
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,

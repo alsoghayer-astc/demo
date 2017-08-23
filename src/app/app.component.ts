@@ -11,6 +11,6 @@ export class AppComponent {
   a:XMLSerializer;
   b:XMLDocument;
   constructor(private test:TestService){
-    test.save();
+    test.runTest();
   }
 }

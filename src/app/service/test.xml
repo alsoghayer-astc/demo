@@ -1,72 +1,16 @@
-import * as xmlbuilder from 'xmlbuilder';
-
-export const XML = `
-    <Transaction service="CSW-ebRIM" version="2.0.2"
-        xmlns="http://www.opengis.net/cat/csw/2.0.2"
-        xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
-        xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"
-        xmlns:wrs="http://www.opengis.net/cat/wrs/1.0"
-        xmlns:gml="http://www.opengis.net/gml/3.2"
-        xmlns:ogc="http://www.opengis.net/ogc"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        verboseResponse="true">
-
-    </Transaction>
-`;
-
-function prepareRoot(){
-  let root = xmlbuilder.create("Transaction");
-  root.att('xmlns','http://www.opengis.net/cat/csw/2.0.2');
-  root.att('xmlns:csw','http://www.opengis.net/cat/csw/2.0.2'); 
-  root.att('xmlns:rim','urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0'); 
-  root.att('xmlns:wrs','http://www.opengis.net/cat/wrs/1.0'); 
-  root.att('xmlns:gml','http://www.opengis.net/gml/3.2'); 
-  root.att('xmlns:ogc','http://www.opengis.net/ogc'); 
-  root.att('xmlns:xlink','http://www.w3.org/1999/xlink');
-  return root;
-}
-
-function prepareSlots(slots:{name:string,type:string,value:any}[]){
-  let xmlSlots = [];
-  for(let slot of slots){
-    let s = xmlbuilder.create('rim:Slot')
-      .att('name',slot.name)
-      .att('slotType',slot.type)
-      .att('value',slot.value);
-    xmlSlots.push(s);
-  }
-  return xmlSlots;
-}
-
-
-export function transaction(){
-  let objectType = "urn:ogc:def:ebRIM-ObjectType:OGC:Dataset";
-  let root = prepareRoot();
-  root
-    .ele('wrs:ExtrinsicObject').att('id','').att('objectType',objectType)
-  
-  let tempSlots = [
-    {name:'slotName',type:'String',value:'some Slot Value'}
-  ];
-
-  
-  let slots = prepareSlots(tempSlots);
-  
-  for(let s of slots){
-
-    console.log(s.toString())
-  }
-  
-  return root.toString();
-}
-
-
-// urn:auth:def:objectType:222:Vehicle3
-/*
-
-<wrs:ExtrinsicObject id="urn:x-indicio:test:Dataset"
-      objectType="urn:ogc:def:ebRIM-ObjectType:OGC:Dataset">
-      <rim:Slot name="http://purl.org/dc/terms/Location"
+<Transaction xmlns="http://www.opengis.net/cat/csw/2.0.2"
+  xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
+  xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"
+  xmlns:wrs="http://www.opengis.net/cat/wrs/1.0"
+  xmlns:gml="http://www.opengis.net/gml/3.2"
+  xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  service="CSW"
+  version="2.0.2"
+  verboseResponse="true">
+    <wrs:ExtrinsicObject id="urn:x-indicio:test:Dataset"
+      objectType="urn:ogc:def:ebRIM-ObjectType:OGC:Dataset" >
+      <rim:Slot  name="http://purl.org/dc/terms/Location"
         slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
         <wrs:ValueList>
           <wrs:AnyValue>
@@ -141,13 +85,3 @@ export function transaction(){
           value="A test dataset object."/>
       </rim:Description>
     </wrs:ExtrinsicObject>
-*/
-// <csw:Insert>
-// <rim:User id="urn:x-indicio:csw-ebrim:def:user:registryuser">
-//     <rim:PersonName firstName="registry" middleName="" lastName="user" />
-// </rim:User>
-// </csw:Insert>
-export function toXMLDoc(text:string){
-    let parser = new DOMParser();
-    return parser.parseFromString(text, "text/xml");
-}

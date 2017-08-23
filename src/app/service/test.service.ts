@@ -1,18 +1,29 @@
 import {Injectable} from '@angular/core';
 import {Http,Headers,RequestOptions} from '@angular/http';
-import {toXMLDoc,XML} from './xml';
+import {toXMLDoc,XML,transaction} from './xml';
+import {Observable} from 'rxjs';
+import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
+import * as xmlbuilder from 'xmlbuilder'; 
 
 @Injectable()
 export class TestService{
     constructor(private http:Http){}
+    runTest(){
+        this.testNew();
+    }
     save(){
         let options = new RequestOptions();
         options.headers = new Headers();
         options.headers.append("Content-Type","text/xml");
         options.headers.append("Authorization","Basic " + btoa("admin:SlithyToves"));
         let text = new XMLSerializer().serializeToString(this.testXML())
-        this.http.post("http://localhost:8888/indicio/publish",text,options)
-            .subscribe();
+        this.http.post(environment.api +"publish",text,options)
+            .map(i=>i.text())
+            .subscribe(i=>console.log(i));
+    }
+    testNew(){
+        console.log(transaction());
     }
     testXML(){
         let doc = toXMLDoc(XML);
