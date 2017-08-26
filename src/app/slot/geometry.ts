@@ -1,13 +1,15 @@
-import {Slot} from './slot.interface';
-import {XMLElementOrXMLNode} from '@types/xmlbuilder';
+import {Slot} from './slot';
+import {create} from 'xmlbuilder';
+import {SlotType} from './slottype.enum';
 
-const SLOT_TYPE = 'urn:ogc:def:dataType:ISO-19107:2003:GM_Point';
 const SLOT_TAG = 'gml:Point';
 
-export class GM_PointSlot implements Slot{
+export class GM_PointSlot extends Slot{
     latitude = 0;
     longitude = 0;
-    constructor(coordinates:(string|{latitude:number,longitude:number})){
+    constructor(name:string,coordinates:(string|{latitude:number,longitude:number}),type=SLOT_TAG){
+        super(name,coordinates,SlotType.GM_Point);
+
         if(typeof coordinates == 'string'){
             let parts = coordinates.split(' ');
             this.latitude = parseFloat(parts[0]);
@@ -20,9 +22,8 @@ export class GM_PointSlot implements Slot{
         }
     }
 
-    toXML(parent:XMLElementOrXMLNode,name:string){
-        parent
-            .ele('rim:Slot').att('slotType',SLOT_TYPE).att('name',name)
+    build(){
+        return create('rim:Slot').att('slotType',this.type).att('name',this.name)
             .ele('wrs:ValueList')
             .ele('wrs:AnyValue')
             .ele(SLOT_TAG)

@@ -1,0 +1,290 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<rim:ClassificationScheme xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"
+  id="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType" isInternal="true"
+  nodeType="urn:oasis:names:tc:ebxml-regrep:NodeType:UniqueCode">
+
+  <rim:Name>
+    <rim:LocalizedString xml:lang="en" value="DataType"/>
+  </rim:Name>
+  <rim:Description>
+    <rim:LocalizedString xml:lang="en" 
+      value="This is the canonical ClassificationScheme for pre-defined data types"/>
+  </rim:Description>
+
+  <rim:ClassificationNode code="Boolean"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:Boolean">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="Boolean"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="Date"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:Date">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="Date"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="DateTime"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:DateTime">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="DateTime"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="Double"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:Double">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="Double"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="Duration"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:Duration">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="Duration"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="Float"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:Float">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="Float"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="Integer"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:Integer">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="Integer"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="ObjectRef"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:ObjectRef">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="ObjectRef"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="String"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:String">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="String"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="Time"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:Time">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="Time"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+  <rim:ClassificationNode code="URI"
+    parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+    id="urn:oasis:names:tc:ebxml-regrep:DataType:URI">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="URI"/>
+    </rim:Name>
+  </rim:ClassificationNode>
+
+  <!-- extensions from Basic package -->
+  <rim:ClassificationNode code="Language"
+      parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+      id="urn:ogc:def:dataType:RFC-4646:LanguageTag">
+    <rim:Slot name="http://purl.org/dc/elements/1.1/source">
+      <rim:ValueList>
+        <rim:Value>http://tools.ietf.org/html/rfc4646</rim:Value>
+        <rim:Value>http://www.sil.org/iso639-3/</rim:Value>
+        <rim:Value>http://www.iana.org/assignments/language-subtag-registry</rim:Value>
+      </rim:ValueList>
+    </rim:Slot>
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="Language"/>
+    </rim:Name>
+    <rim:Description>
+      <rim:LocalizedString xml:lang="en"
+          value="Identifies the spoken, written, or signed language of some resource. The value is a string consisting of a primary language subtag and a (possibly empty) series of subsequent subtags (see RFC 4646)."
+        />
+    </rim:Description>
+  </rim:ClassificationNode>
+
+  <rim:ClassificationNode code="GM_Envelope"
+      parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType"
+      id="urn:ogc:def:dataType:ISO-19107:2003:GM_Envelope">
+    <rim:Name>
+      <rim:LocalizedString xml:lang="en" value="GM_Envelope"/>
+    </rim:Name>
+    <rim:Description>
+      <rim:LocalizedString xml:lang="en"
+          value="Denotes a geographic extent using a pair of positions defining opposite corners in arbitrary dimensions. It is represented by a gml:Envelope element."
+        />
+    </rim:Description>
+  </rim:ClassificationNode>
+
+  <rim:ClassificationNode code="GM_Object" id="urn:ogc:def:dataType:ISO-19107:2003:GM_Object"
+      parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType">
+    <rim:Slot name="http://purl.org/dc/elements/1.1/source">
+      <rim:ValueList>
+        <rim:Value>http://portal.opengeospatial.org/files/?artifact_id=4700</rim:Value>
+        <rim:Value>http://portal.opengeospatial.org/files/?artifact_id=16339</rim:Value>
+        <rim:Value>http://portal.opengeospatial.org/files/?artifact_id=15201</rim:Value>
+      </rim:ValueList>
+    </rim:Slot>
+    <rim:Name>
+      <rim:LocalizedString value="GM_Object"/>
+    </rim:Name>
+    <rim:Description>
+      <rim:LocalizedString xml:lang="en"
+          value="The root geometry data type. Values must be valid GML 3.1 (OGC 03-105r1, ISO/CD 19136) representations. Any geometry subtype allowed by the “simple features” profile (OGC 06-049r1) is a permissible value. Coordinate reference systems are identified using the convention documented in OGC 06-023r1."
+        />
+    </rim:Description>
+    <rim:ClassificationNode code="GM_Point" parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Object"
+        id="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en" value="GM_Point"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+            value="A Point is defined by a single coordinate tuple. It is represented by a gml:Point element."
+          />
+      </rim:Description>
+    </rim:ClassificationNode>
+    <rim:ClassificationNode code="GM_Curve" parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Object"
+        id="urn:ogc:def:dataType:ISO-19107:2003:GM_Curve">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en" value="GM_Curve"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+            value="A curve is composed of one or more (linear) curve segments. It is represented by a gml:Curve element containing gml:LineStringSegment components."
+          />
+      </rim:Description>
+      <rim:ClassificationNode code="GM_LineString"
+          parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Curve"
+          id="urn:ogc:def:dataType:ISO-19107:2003:GM_LineString">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en" value="GM_LineString"/>
+        </rim:Name>
+        <rim:Description>
+          <rim:LocalizedString xml:lang="en"
+              value="A LineString is a special curve that consists of a single segment with linear interpolation. It is represented by a gml:LineString element."
+            />
+        </rim:Description>
+      </rim:ClassificationNode>
+    </rim:ClassificationNode>
+    <rim:ClassificationNode code="GM_Surface" parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Object"
+        id="urn:ogc:def:dataType:ISO-19107:2003:GM_Surface">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en" value="GM_Surface"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+            value="A Surface is a 2-dimensional primitive composed of one or more (polygonal) surface patches. It is represented by a gml:Surface element containing gml:PolygonPatch components."
+          />
+      </rim:Description>
+      <rim:ClassificationNode code="GM_Polygon" parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Surface"
+          id="urn:ogc:def:dataType:ISO-19107:2003:GM_Polygon">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en" value="GM_Polygon"/>
+        </rim:Name>
+        <rim:Description>
+          <rim:LocalizedString xml:lang="en"
+              value="A Polygon is a special surface that is defined by a single surface patch. It is represented by a gml:Polygon element."
+            />
+        </rim:Description>
+      </rim:ClassificationNode>
+    </rim:ClassificationNode>
+    <rim:ClassificationNode code="GM_Aggregate" parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Object"
+        id="urn:ogc:def:dataType:ISO-19107:2003:GM_Aggregate">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en" value="GM_Aggregate"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+            value="A (heterogeneous) geometry collection that includes one or more geometry members. It is represented by a gml:MultiGeometry element."
+          />
+      </rim:Description>
+      <rim:ClassificationNode code="GM_MultiPoint"
+          parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Aggregate"
+          id="urn:ogc:def:dataType:ISO-19107:2003:GM_MultiPoint">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en" value="GM_MultiPoint"/>
+        </rim:Name>
+        <rim:Description>
+          <rim:LocalizedString xml:lang="en"
+              value="A homogeneous geometry collection that includes one or more gml:Point members. It is represented by a gml:MultiPoint element."
+            />
+        </rim:Description>
+      </rim:ClassificationNode>
+      <rim:ClassificationNode code="GM_MultiCurve"
+          parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Aggregate"
+          id="urn:ogc:def:dataType:ISO-19107:2003:GM_MultiCurve">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en" value="GM_MultiCurve"/>
+        </rim:Name>
+        <rim:Description>
+          <rim:LocalizedString xml:lang="en"
+              value="A homogeneous geometry collection that includes one or more gml:Curve members. It is represented by a gml:MultiCurve element."
+            />
+        </rim:Description>
+      </rim:ClassificationNode>
+      <rim:ClassificationNode code="GM_MultiSurface"
+          parent="urn:ogc:def:dataType:ISO-19107:2003:GM_Aggregate"
+          id="urn:ogc:def:dataType:ISO-19107:2003:GM_MultiSurface">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en" value="GM_MultiSurface"/>
+        </rim:Name>
+        <rim:Description>
+          <rim:LocalizedString xml:lang="en"
+              value="A homogeneous geometry collection that includes one or more gml:Surface members. It is represented by a gml:MultiSurface element."
+            />
+        </rim:Description>
+      </rim:ClassificationNode>
+    </rim:ClassificationNode>
+  </rim:ClassificationNode>
+
+  <rim:ClassificationNode code="TM_GeometricPrimitive"
+      id="urn:ogc:def:dataType:ISO-19108:2002:TM_GeometricPrimitive"
+      parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType">
+    <rim:Slot name="http://purl.org/dc/elements/1.1/source">
+      <rim:ValueList>
+        <rim:Value>http://portal.opengeospatial.org/files/?artifact_id=4700</rim:Value>
+      </rim:ValueList>
+    </rim:Slot>
+    <rim:Name>
+      <rim:LocalizedString value="TM_GeometricPrimitive"/>
+    </rim:Name>
+    <rim:Description>
+      <rim:LocalizedString xml:lang="en"
+          value="Root temporal primitive data type. Values must be valid GML 3.1 (OGC 03-105r1, ISO/CD 19136) representations. Any primitive temporal subtype is a permissible value. Following ISO 8601, the Gregorian calendar with UTC is the default reference system."
+        />
+    </rim:Description>
+    <rim:ClassificationNode code="TM_Instant"
+        parent="urn:ogc:def:dataType:ISO-19108:2002:TM_GeometricPrimitive"
+        id="urn:ogc:def:dataType:ISO-19108:2002:TM_Instant">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en" value="TM_Instant"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+            value="The gml:TimeInstant element denotes a position in time. In practice, an instant is an interval whose duration is less than the resolution of the time scale."
+          />
+      </rim:Description>
+    </rim:ClassificationNode>
+    <rim:ClassificationNode code="TM_Period"
+        parent="urn:ogc:def:dataType:ISO-19108:2002:TM_GeometricPrimitive"
+        id="urn:ogc:def:dataType:ISO-19108:2002:TM_Period">
+      <rim:Name>
+        <rim:LocalizedString value="TM_Period"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString
+            value="The gml:TimePeriod element denotes an extent in time. It is an open interval bounded by beginning and end points (i.e. instants), and has a duration."
+          />
+      </rim:Description>
+    </rim:ClassificationNode>
+  </rim:ClassificationNode>
+
+</rim:ClassificationScheme>

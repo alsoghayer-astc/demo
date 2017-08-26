@@ -16,7 +16,7 @@ export const XML = `
 
 export function prepareRoot(){
 
-  let root = xmlbuilder.create("Transaction")
+  let root = xmlbuilder.create("Transaction",undefined,{ encoding: 'utf-8' })
   root.att('xmlns','http://www.opengis.net/cat/csw/2.0.2')
     .att('xmlns:csw','http://www.opengis.net/cat/csw/2.0.2')
     .att('xmlns:rim','urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0')
@@ -27,6 +27,7 @@ export function prepareRoot(){
     .att('service','CSW')
     .att('version','2.0.2')
     .att('verboseResponse','true');
+
   return root;
 }
 

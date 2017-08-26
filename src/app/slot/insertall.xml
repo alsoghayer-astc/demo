@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csw:Transaction xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
+  xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"
+  xmlns:wrs="http://www.opengis.net/cat/wrs/1.0"
+  xmlns:gml="http://www.opengis.net/gml/3.2"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:ogc="http://www.opengis.net/ogc"
+  service="CSW-ebRIM"
+  version="2.0.2"
+  verboseResponse="true">
+  <csw:Insert>
+    <rim:AdhocQuery id="urn:x-indicio:test:sample:AdhocQuery"
+      lid="urn:x-indicio:test:sample:AdhocQuery"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:AdhocQuery"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted">
+      <rim:Slot name="id"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:URI">
+        <rim:ValueList/>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test AdhocQuery"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Returns all AuditableEvents for a given RegistryObject"/>
+      </rim:Description>
+      <rim:VersionInfo versionName="20140502T163653Z"/>
+      <rim:QueryExpression queryLanguage="urn:ogc:def:ebRIM-QueryLanguage:OGC:CSW-Filter">
+        <csw:Query typeNames="AuditableEvent">
+          <csw:ElementSetName typeNames="AuditableEvent">full
+          </csw:ElementSetName>
+          <csw:Constraint version="1.1.0">
+            <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>AuditableEvent/affectedObjects/value</ogc:PropertyName>
+                <ogc:Literal>${id}</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:Filter>
+          </csw:Constraint>
+          <ogc:SortBy xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:SortProperty>
+              <ogc:PropertyName>/rim:AuditableEvent/@timestamp</ogc:PropertyName>
+              <ogc:SortOrder>DESC</ogc:SortOrder>
+            </ogc:SortProperty>
+          </ogc:SortBy>
+        </csw:Query>
+      </rim:QueryExpression>
+    </rim:AdhocQuery>
+    <rim:Association id="urn:x-indicio:test:sample:Association"
+      lid="urn:x-indicio:test:sample:Association"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Association"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:RelatedTo"
+      sourceObject="urn:x-indicio:test:sample:AdhocQuery"
+      targetObject="urn:x-indicio:test:sample:ClassificationScheme:001">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test Association"/>
+      </rim:Name>
+      <rim:VersionInfo versionName="20140502T163651Z"/>
+    </rim:Association>
+    <rim:ClassificationScheme id="urn:x-indicio:test:sample:ClassificationScheme:001"
+      lid="urn:x-indicio:test:sample:ClassificationScheme:001"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ClassificationScheme"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      isInternal="true"
+      nodeType="urn:oasis:names:tc:ebxml-regrep:NodeType:UniqueCode">
+      <rim:Slot name="http://purl.org/dc/terms/spatial"
+        slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
+        <wrs:ValueList>
+          <wrs:AnyValue>
+            <gml:Point gml:id="urn_uuid_7689b1g2-1484-11e2-892e-0900200c9a55"
+              srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:pos>-70 -170</gml:pos>
+            </gml:Point>
+          </wrs:AnyValue>
+        </wrs:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test ClassificationScheme 1"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="My custom scheme."/>
+      </rim:Description>
+      <rim:ClassificationNode id="urn:x-indicio:test:sample:ClassificationNode:001"
+        lid="urn:x-indicio:test:sample:ClassificationNode:001"
+        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ClassificationNode"
+        code="A"
+        parent="urn:x-indicio:test:sample:ClassificationScheme:001"
+        path="/urn:x-indicio:test:sample:ClassificationScheme:001/A">
+        <rim:Name>
+          <rim:LocalizedString value="Test ClassificationNode 1"/>
+        </rim:Name>
+      </rim:ClassificationNode>
+    </rim:ClassificationScheme>
+    <rim:ClassificationScheme id="urn:x-indicio:test:sample:ClassificationScheme:002"
+      lid="urn:x-indicio:test:sample:ClassificationScheme:002"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ClassificationScheme"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      isInternal="false"
+      nodeType="urn:oasis:names:tc:ebxml-regrep:NodeType:UniqueCode">
+      <rim:Name>
+        <rim:LocalizedString value="Test ClassificationScheme 2"/>
+      </rim:Name>
+    </rim:ClassificationScheme>
+    <rim:ClassificationNode id="urn:x-indicio:test:sample:ClassificationNode:002"
+      lid="urn:x-indicio:test:sample:ClassificationNode:002"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ClassificationNode"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      code="alpha"
+      parent="urn:oasis:names:tc:ebxml-regrep:classificationScheme:EventType"
+      path="/urn:oasis:names:tc:ebxml-regrep:classificationScheme:EventType/alpha">
+      <rim:Slot name="http://purl.org/dc/terms/modified"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:DateTime">
+        <rim:ValueList>
+          <rim:Value>2009-01-29T09:29:40-08:00</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString value="Test ClassificationNode 2"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString value="Event type alpha."/>
+      </rim:Description>
+      <rim:ClassificationNode id="urn:x-indicio:test:sample:ClassificationNode:003"
+        lid="urn:x-indicio:test:sample:ClassificationNode:003"
+        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ClassificationNode"
+        status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+        code="beta"
+        parent="urn:x-indicio:test:sample:ClassificationNode:002"
+        path="/urn:oasis:names:tc:ebxml-regrep:classificationScheme:EventType/alpha/beta">
+        <rim:Name>
+          <rim:LocalizedString value="Test ClassificationNode 3"/>
+        </rim:Name>
+        <rim:Description>
+          <rim:LocalizedString value="Event type beta."/>
+        </rim:Description>
+      </rim:ClassificationNode>
+    </rim:ClassificationNode>
+    <rim:ExternalLink id="urn:x-indicio:test:sample:ExternalLink"
+      lid="urn:x-indicio:test:sample:ExternalLink"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalLink"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      externalURI="http://www.w3.org/">
+      <rim:Slot name="http://purl.org/dc/elements/1.1/date"
+        slotType="urn:ogc:def:dataType:ISO-19108:2002:TM_Instant">
+        <rim:ValueList>
+          <rim:Value>2008-05-05Z</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test ExternalLink (english)"/>
+        <rim:LocalizedString xml:lang="es"
+          charset="UTF-8"
+          value="Test Enlace Externo (español)"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="[2008-05-05Z] ext link"/>
+      </rim:Description>
+    </rim:ExternalLink>
+    <rim:ExternalIdentifier id="urn:x-indicio:test:sample:ExternalIdentifier:001"
+      lid="urn:x-indicio:test:sample:ExternalIdentifier:001"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      registryObject="urn:x-indicio:test:sample:ExternalLink"
+      identificationScheme="urn:x-indicio:test:sample:ClassificationScheme:002"
+      value="urn:isbn:0-110-0111-X">
+      <rim:Slot name="http://purl.org/dc/elements/1.1/date"
+        slotType="urn:ogc:def:dataType:ISO-19108:2002:TM_Instant">
+        <rim:ValueList>
+          <rim:Value>2008-06-05Z</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test ExternalIdentifier 1"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="[2008-06-05Z] external id 1"/>
+        <rim:LocalizedString xml:lang="fr"
+          charset="UTF-8"
+          value="[2008-06-05Z] id externe 1"/>
+      </rim:Description>
+    </rim:ExternalIdentifier>
+    <rim:Federation id="urn:x-indicio:test:sample:Federation"
+      lid="urn:x-indicio:test:sample:Federation"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Federation"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      replicationSyncLatency="P100D">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test Federation"/>
+      </rim:Name>
+    </rim:Federation>
+    <rim:Organization id="urn:x-indicio:test:sample:Organization"
+      lid="urn:x-indicio:test:sample:Organization"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Organization"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      primaryContact="urn:x-indicio:test:sample:User">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test Organization"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en"
+          value="The OGC is a non-profit, international, voluntary consensus standards organization that is leading the development of standards for geospatial and location based services."/>
+      </rim:Description>
+      <rim:ExternalIdentifier id="urn:x-indicio:test:sample:ExternalIdentifier:002"
+        lid="urn:x-indicio:test:sample:ExternalIdentifier:002"
+        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
+        status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+        registryObject="urn:x-indicio:test:sample:Organization"
+        identificationScheme="urn:x-indicio:test:sample:ClassificationScheme:002"
+        value="urn:isbn:0-220-0222-X">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en"
+            charset="UTF-8"
+            value="Test ExternalIdentifier 2"/>
+        </rim:Name>
+        <rim:Description>
+          <rim:LocalizedString xml:lang="en"
+            charset="UTF-8"
+            value="[2008-06-05Z] external id 2"/>
+          <rim:LocalizedString xml:lang="fr"
+            charset="UTF-8"
+            value="[2008-06-05Z] id externe 2"/>
+        </rim:Description>
+      </rim:ExternalIdentifier>
+      <rim:Address city="Wayland"
+        stateOrProvince="MA"
+        country="US"
+        postalCode="01778-5037"
+        street="Main Street"
+        streetNumber="35, Suite 5"/>
+      <rim:TelephoneNumber areaCode="508"
+        countryCode="1"
+        number="655-5858"
+        phoneType="OfficePhone"/>
+      <rim:TelephoneNumber areaCode="508"
+        countryCode="1"
+        number="653-3512"
+        phoneType="FAX"/>
+      <rim:EmailAddress address="compliance@opengeospatial.org"
+        type="OfficeEmail"/>
+      <rim:EmailAddress address="webmaster@opengeospatial.org"
+        type="OfficeEmail"/>
+    </rim:Organization>
+    <rim:Person id="urn:x-indicio:test:sample:Person"
+      lid="urn:x-indicio:test:sample:Person"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Person"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted">
+      <rim:Slot name="http://purl.org/dc/terms/spatial"
+        slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_LineString">
+        <wrs:ValueList>
+          <wrs:AnyValue>
+            <gml:LineString gml:id="urn_uuid_7689b1g2-1484-11e2-892e-0900200c9a66"
+              srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:posList srsDimension="2">
+                            -14.16 -70.53
+                            -14.17 -72.54
+                            -14.19 -70.55
+                            -14.21 -72.56
+                            
+              </gml:posList>
+            </gml:LineString>
+          </wrs:AnyValue>
+        </wrs:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test Person"/>
+      </rim:Name>
+      <rim:Address country="CA"
+        stateOrProvince="BC"
+        city="Vancouver"
+        street="Granville St"
+        streetNumber="409"
+        postalCode="V6T1T2"/>
+      <rim:PersonName firstName="John"
+        lastName="Doe"/>
+      <rim:TelephoneNumber countryCode="1"
+        areaCode="604"
+        number="4842751"
+        extension="250"/>
+      <rim:EmailAddress address="j.doe@hotmail.com"
+        type="HomeEmail"/>
+    </rim:Person>
+    <rim:Registry id="urn:x-indicio:test:sample:Registry"
+      lid="urn:x-indicio:test:sample:Registry"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Registry"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      catalogingLatency="P1M"
+      conformanceProfile="registryLite"
+      operator="urn:x-indicio:test:sample:Organization"
+      replicationSyncLatency="P3M"
+      specificationVersion="1.1.0">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test Registry"/>
+      </rim:Name>
+    </rim:Registry>
+    <rim:Service id="urn:x-indicio:test:sample:Service"
+      lid="urn:x-indicio:test:sample:Service"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Service"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted">
+      <rim:Slot name="http://purl.org/dc/elements/1.1/subject"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:String">
+        <rim:ValueList>
+          <rim:Value>csw</rim:Value>
+          <rim:Value>wrs</rim:Value>
+          <rim:Value>ebrim</rim:Value>
+          <rim:Value>csw-ebrim</rim:Value>
+          <rim:Value>INdicio</rim:Value>
+          <rim:Value>Galdos</rim:Value>
+          <rim:Value>registry</rim:Value>
+          <rim:Value>catalogue</rim:Value>
+          <rim:Value>ogc</rim:Value>
+          <rim:Value>web service</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test Service"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="The INdicio Web Registry Service (WRS) implements the CSW-ebRIM 1.0.1 specification (OGC 07-110r3). CSW-ebRIM is the ebRIM profile of the Catalogue 2.0.2 specification (OGC 07-006r1)."/>
+      </rim:Description>
+      <rim:VersionInfo versionName="20140502T163653Z"/>
+      <rim:Classification id="urn:x-indicio:test:sample:Classification:001"
+        lid="urn:x-indicio:test:sample:Classification:001"
+        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification"
+        status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+        classifiedObject="urn:x-indicio:test:sample:Service"
+        classificationNode="urn:ogc:serviceType:CatalogueService:2.0.2:HTTP:ebRIM">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en"
+            charset="UTF-8"
+            value="Test Classification 1"/>
+        </rim:Name>
+        <rim:VersionInfo versionName="20140502T163653Z"/>
+      </rim:Classification>
+      <rim:ServiceBinding id="urn:x-indicio:test:sample:ServiceBinding"
+        lid="urn:x-indicio:test:sample:ServiceBinding"
+        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ServiceBinding"
+        status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+        service="urn:x-indicio:test:sample:Service"
+        accessURI="http://www.galdosinc.com/indicio">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en"
+            charset="UTF-8"
+            value="Test ServiceBinding"/>
+        </rim:Name>
+        <rim:SpecificationLink id="urn:x-indicio:test:sample:SpecificationLink"
+          lid="urn:x-indicio:test:sample:SpecificationLink"
+          objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:SpecificationLink"
+          status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+          serviceBinding="urn:x-indicio:test:sample:ServiceBinding"
+          specificationObject="urn:x-indicio:test:sample:Annotation">
+          <rim:Name>
+            <rim:LocalizedString xml:lang="en"
+              charset="UTF-8"
+              value="Test SpecificationLink"/>
+          </rim:Name>
+          <rim:UsageDescription>
+            <rim:LocalizedString xml:lang="en"
+              charset="UTF-8"
+              value="CSW-ebRIM specification - to be used by anyone."/>
+          </rim:UsageDescription>
+          <rim:UsageParameter>include=all</rim:UsageParameter>
+          <rim:UsageParameter>elementSetName=full</rim:UsageParameter>
+        </rim:SpecificationLink>
+      </rim:ServiceBinding>
+    </rim:Service>
+    <rim:Subscription id="urn:x-indicio:test:sample:Subscription"
+      lid="urn:x-indicio:test:sample:Subscription"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Subscription"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+      startTime="2014-05-02T12:00:00Z"
+      endTime="2014-05-02T16:36:53Z"
+      notificationInterval="P1Y"
+      selector="urn:x-indicio:test:sample:AdhocQuery">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test Subscription"/>
+      </rim:Name>
+      <rim:VersionInfo versionName="20140502T163653Z"/>
+      <rim:NotifyAction notificationOption="urn:oasis:names:tc:ebxml-regrep:NotificationOptionType:ObjectRefs"
+        endPoint="http://www.galdosinc.com/indicio/notify"/>
+    </rim:Subscription>
+    <rim:User id="urn:x-indicio:test:sample:User"
+      lid="urn:x-indicio:test:sample:User"
+      objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Person:User"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted">
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          charset="UTF-8"
+          value="Test User"/>
+      </rim:Name>
+      <rim:EmailAddress address="user1@galdosinc.com"/>
+    </rim:User>
+    <wrs:ExtrinsicObject id="urn:x-indicio:test:sample:Annotation"
+      lid="urn:x-indicio:test:sample:Annotation"
+      objectType="urn:ogc:def:ebRIM-ObjectType:OGC:Annotation"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted">
+      <rim:Slot name="http://purl.org/dc/terms/hasVersion"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:Boolean">
+        <rim:ValueList>
+          <rim:Value>true</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Slot name="http://purl.org/dc/terms/date"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:Date">
+        <rim:ValueList>
+          <rim:Value>2012-05-06</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Slot name="http://purl.org/dc/elements/1.1/identifier"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:Double">
+        <rim:ValueList>
+          <rim:Value>1.0</rim:Value>
+          <rim:Value>1.1</rim:Value>
+          <rim:Value>1.3</rim:Value>
+          <rim:Value>1.4</rim:Value>
+          <rim:Value>1.5</rim:Value>
+          <rim:Value>1.7</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Slot name="http://purl.org/dc/terms/educationLevel"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:Integer">
+        <rim:ValueList>
+          <rim:Value>23</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Slot name="http://purl.org/dc/terms/abstract"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:String">
+        <rim:ValueList>
+          <rim:Value>This is an example annotation object with various slots.</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Slot name="http://purl.org/dc/terms/spatial"
+        slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Object">
+        <wrs:ValueList>
+          <wrs:AnyValue>
+            <gml:Polygon gml:id="urn_uuid_7689b1g2-1484-11e2-892e-0900200c9a77"
+              srsDimension="2"
+              srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:descriptionReference xlink:href="urn:ogc:def:area:EPSG::3890"
+                xlink:type="simple"/>
+              <gml:identifier codeSpace="OGP">urn:ogc:def:extent-polygon:EPSG::3890
+              </gml:identifier>
+              <gml:exterior>
+                <gml:LinearRing>
+                  <gml:posList>54.42030 11.17000 54.75200 11.17056 54.75032 11.50002 54.42030 11.50058 54.42030 11.17000</gml:posList>
+                </gml:LinearRing>
+              </gml:exterior>
+            </gml:Polygon>
+          </wrs:AnyValue>
+        </wrs:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en"
+          value="Test Annotation Object"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en-US"
+          value="Partner Test Annotation Object"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="fr"
+          value="Annotation Test objet"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="zh-tw"
+          value="測試註釋對象"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="is"
+          value="Próf umsögnina Object"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="no"
+          value="Test merknad Object"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en"
+          value="A test annotation object."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en-US"
+          value="A test annotation object, y'all."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="fr"
+          value="Un objet d'annotation de test."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="zh-tw"
+          value="測試註釋對象."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="is"
+          value="A próf umsögnina mótmæla."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="no"
+          value="En test merknad objekt."/>
+      </rim:Description>
+    </wrs:ExtrinsicObject>
+    <wrs:ExtrinsicObject id="urn:x-indicio:test:sample:Archetype"
+      lid="urn:x-indicio:test:sample:Archetype"
+      objectType="urn:ogc:def:csw-ebrim:ep-objectType:Archetype"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted">
+      <rim:Slot name="epRequired"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:String">
+        <rim:ValueList>
+          <rim:Value>Name</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Slot name="epObjectType"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:URI">
+        <rim:ValueList>
+          <rim:Value>urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Slot name="epMembers"
+        slotType="urn:oasis:names:tc:ebxml-regrep:DataType:URI">
+        <rim:ValueList>
+          <rim:Value>urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Person[0,1]</rim:Value>
+          <rim:Value>urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Service[0,1]</rim:Value>
+        </rim:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString xml:lang="en"
+          value="Test Archetype Object"/>
+      </rim:Name>
+      <rim:Classification id="urn:x-indicio:test:sample:Classification:002"
+        lid="urn:x-indicio:test:sample:Classification:002"
+        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification"
+        status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted"
+        classifiedObject="urn:x-indicio:test:sample:Archetype"
+        classificationScheme="urn:x-indicio:test:sample:ClassificationScheme:002"
+        nodeRepresentation="omega">
+        <rim:Name>
+          <rim:LocalizedString xml:lang="en"
+            value="Test Classification 2"/>
+        </rim:Name>
+      </rim:Classification>
+    </wrs:ExtrinsicObject>
+    <wrs:ExtrinsicObject id="urn:x-indicio:test:sample:Dataset"
+      lid="urn:x-indicio:test:sample:Dataset"
+      objectType="urn:ogc:def:ebRIM-ObjectType:OGC:Dataset"
+      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted">
+      <rim:Slot name="http://purl.org/dc/terms/Location"
+        slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
+        <wrs:ValueList>
+          <wrs:AnyValue>
+            <gml:Point gml:id="urn_uuid_7689b1g1-1484-11e2-892e-0800200c9a66"
+              srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:pos>49.285 -123.114</gml:pos>
+            </gml:Point>
+          </wrs:AnyValue>
+        </wrs:ValueList>
+      </rim:Slot>
+      <rim:Slot name="http://purl.org/dc/terms/spatial"
+        slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_LineString">
+        <wrs:ValueList>
+          <wrs:AnyValue>
+            <gml:LineString gml:id="urn_uuid_7689b1g2-1484-11e2-892e-0800200c9a66"
+              srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:posList srsDimension="2">
+                                49.16733 -123.93676
+                                49.92293 -122.77221
+                                50.25422 -122.10205
+                                50.67383 -120.33325
+                                51.25503 -117.56469
+                            
+              </gml:posList>
+            </gml:LineString>
+          </wrs:AnyValue>
+        </wrs:ValueList>
+      </rim:Slot>
+      <rim:Slot name="http://purl.org/dc/terms/coverage"
+        slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Polygon">
+        <wrs:ValueList>
+          <wrs:AnyValue>
+            <gml:Polygon gml:id="urn_uuid_7689b1g3-1484-11e2-892e-0800200c9a66"
+              srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:exterior>
+                <gml:LinearRing>
+                  <gml:posList srsDimension="2">
+                                        49.2221380467 -123.023271560
+                                        49.2220539590 -123.012800216
+                                        49.2233713168 -123.012371063
+                                        49.2236796295 -123.012800216
+                                        49.2325077683 -123.012800216
+                                        49.2326759081 -123.017392158
+                                        49.2321434637 -123.023228645
+                                        49.2221380467 -123.023271560
+                                    
+                  </gml:posList>
+                </gml:LinearRing>
+              </gml:exterior>
+              <gml:interior>
+                <gml:LinearRing>
+                  <gml:posList srsDimension="2">
+                                        49.2302938754 -123.0219411849
+                                        49.2303219000 -123.0209541320
+                                        49.2315269419 -123.0212116241
+                                        49.2313587983 -123.0220270156
+                                        49.2302938754 -123.0219411849
+                                    
+                  </gml:posList>
+                </gml:LinearRing>
+              </gml:interior>
+            </gml:Polygon>
+          </wrs:AnyValue>
+        </wrs:ValueList>
+      </rim:Slot>
+      <rim:Name>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en"
+          value="Test Dataset Object"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en-US"
+          value="Partner Test Dataset Object"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="fr"
+          value="Base de test objet"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="zh-tw"
+          value="測試數據集對象"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="is"
+          value="Próf Dataset Object"/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="no"
+          value="Test Datasett Object"/>
+      </rim:Name>
+      <rim:Description>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en"
+          value="A test dataset object."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="en-US"
+          value="A test dataset object, y'all."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="fr"
+          value="Un objet de données de test."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="zh-tw"
+          value="測試數據集對象."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="is"
+          value="A próf Dataset mótmæla."/>
+        <rim:LocalizedString charset="UTF-8"
+          xml:lang="no"
+          value="En test datasett objekt."/>
+      </rim:Description>
+    </wrs:ExtrinsicObject>
+  </csw:Insert>
+</csw:Transaction>
