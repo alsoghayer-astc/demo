@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {MyMaterialModule} from './material.module';
 import { AppComponent } from './app.component';
-import {BackendService,TransactionService} from './service';
+import {BackendService,TransactionService,BackboneService} from './service';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import {BackendService,TransactionService} from './service';
   imports: [
     BrowserModule,MyMaterialModule,HttpModule
   ],
-  providers: [BackendService,TransactionService],
+  providers: [BackendService,TransactionService,BackboneService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
