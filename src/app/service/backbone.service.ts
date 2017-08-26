@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs';
 
+/*
+http://localhost:8888/indicio/query?request=GetRecordById&service=CSW-ebRIM&version=1.0.1&id=urn:oasis:names:tc:ebxml-regrep:classificationScheme:AssociationType&outputFormat=application/json&elementSetName=full&include=all&ssk=code
+*/
 @Injectable()
 export class BackboneService{
     dataTypes:string;
