@@ -1,21 +1,20 @@
 import { Component,ViewChild } from '@angular/core';
-import {TransactionService,BackboneService} from './service';
+import {TransactionService,BackboneService,MapsService} from './service';
 import {SlotType,GM_PointSlot} from './slot';
 import {} from 'googlemaps';
 import * as xmlbuilder from 'xmlbuilder';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers:[MapsService]
 })
 export class AppComponent {
   title = 'INdicio';
   @ViewChild('mapHolder') mapHolder;
 
-  constructor(private test:TransactionService,private _backbone:BackboneService){}
+  constructor(private _mapService:MapsService,private test:TransactionService,private _backbone:BackboneService){}
 
   ngOnInit(){
     // this._backbone.getDataTypes().subscribe(i=>console.log('dataTypes',i));
@@ -24,14 +23,8 @@ export class AppComponent {
     this.initMap();
   }
   initMap(){
-    console.log(this.mapHolder)
-    var map = new google.maps.Map(this.mapHolder.nativeElement, {
-      center: {lat: 24.8043617, lng: 46.6573563},
-      zoom: 16
-    });
-    let marker = new google.maps.Marker({
-      position:{lat: 24.805024, lng: 46.656291},
-      map:map
-    });
+    this._mapService.map(this.mapHolder.nativeElement);
+    this._mapService.center(24.805024,46.656291,15);
+    this._mapService.addMarker({position:{lat: 24.805024, lng: 46.656291}});
   }
 }
