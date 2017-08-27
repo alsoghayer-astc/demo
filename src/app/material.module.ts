@@ -10,11 +10,12 @@ import {MdCardModule, MdToolbarModule, MdDialogModule, MdButtonModule,
       }  from '@angular/material';
 
 import {CdkTableModule} from '@angular/cdk';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   providers: [],
-  imports: [MdSortModule,CdkTableModule,MdRadioModule,MdPaginatorModule,MdTableModule,MdTabsModule,MdNativeDateModule,MdCardModule,MdAutocompleteModule,MdButtonModule,MdSelectModule,MdProgressBarModule,MdTooltipModule,MdListModule,MdSidenavModule,MdDatepickerModule,MdIconModule,MdToolbarModule,MdDialogModule,MdInputModule,MdProgressSpinnerModule,MdButtonModule, MdCheckboxModule,CommonModule],
-  exports: [MdSortModule,CdkTableModule,MdRadioModule,MdPaginatorModule,MdTableModule,MdTabsModule,MdNativeDateModule,MdCardModule,MdAutocompleteModule,MdButtonModule,MdSelectModule,MdProgressBarModule,MdTooltipModule,MdListModule,MdSidenavModule,MdDatepickerModule,MdIconModule,MdToolbarModule,MdDialogModule,MdInputModule,MdProgressSpinnerModule,MdButtonModule, MdCheckboxModule],
+  imports: [FlexLayoutModule,MdSortModule,CdkTableModule,MdRadioModule,MdPaginatorModule,MdTableModule,MdTabsModule,MdNativeDateModule,MdCardModule,MdAutocompleteModule,MdButtonModule,MdSelectModule,MdProgressBarModule,MdTooltipModule,MdListModule,MdSidenavModule,MdDatepickerModule,MdIconModule,MdToolbarModule,MdDialogModule,MdInputModule,MdProgressSpinnerModule,MdButtonModule, MdCheckboxModule,CommonModule],
+  exports: [FlexLayoutModule,MdSortModule,CdkTableModule,MdRadioModule,MdPaginatorModule,MdTableModule,MdTabsModule,MdNativeDateModule,MdCardModule,MdAutocompleteModule,MdButtonModule,MdSelectModule,MdProgressBarModule,MdTooltipModule,MdListModule,MdSidenavModule,MdDatepickerModule,MdIconModule,MdToolbarModule,MdDialogModule,MdInputModule,MdProgressSpinnerModule,MdButtonModule, MdCheckboxModule],
   declarations: []
 })
 export class MyMaterialModule {}

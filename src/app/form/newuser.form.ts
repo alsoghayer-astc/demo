@@ -1,13 +1,6 @@
 import {Component,Output,EventEmitter} from '@angular/core';
 import {FormControl,FormGroup,FormArray,FormBuilder} from '@angular/forms';
 
-
-export class Name{
-    lang:string;
-    name:string;
-}
-
-
 @Component({
     selector:'new-user-form',
     template:`

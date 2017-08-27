@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {MyMaterialModule} from './material.module';
 import { AppComponent } from './app.component';
-import {BackendService,TransactionService,BackboneService} from './service';
+import {BackendService,TransactionService,BackboneService,MapsService} from './service';
 import {ALL_FORMS} from './form';
 
 @NgModule({

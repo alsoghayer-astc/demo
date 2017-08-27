@@ -1,13 +1,18 @@
-<md-sidenav-container>
+<md-sidenav-container fxFlexFill>
   <md-sidenav mode="side" opened="true">
     side menu
   </md-sidenav>
 
-  <div style="text-align:center">
-    <h1>
-      Hello {{title}}!
-    </h1>
-  </div>
+  <div fxLayout="column" fxFlexFill>
+    <div style="text-align:center">
+      <h1>
+        Hello {{title}}!
+      </h1>
+    </div>
+    <div #mapHolder fxFlex="1 1">
+      hello map
+    </div>
 
-  <new-user-form></new-user-form>
+    <new-user-form></new-user-form>
+  </div>
 </md-sidenav-container>
