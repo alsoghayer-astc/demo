@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http,URLSearchParams,RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs';
+import { environment } from '../../environments/environment';
 
 /*
 http://localhost:8888/indicio/query?request=GetRecordById&service=CSW-ebRIM&version=1.0.1&id=urn:oasis:names:tc:ebxml-regrep:classificationScheme:AssociationType&outputFormat=application/json&elementSetName=full&include=all&ssk=code
@@ -13,8 +14,20 @@ export class BackboneService{
     }
 
     fetchDataTypes(){
-        let link = "http://localhost:8888/indicio/query?&request=GetRecordById&service=CSW-ebRIM&version=1.0.1&id=urn:oasis:names:tc:ebxml-regrep:classificationScheme:AssociationType&outputFormat=application/json&elementSetName=full&include=all&ssk=code";
-        return this._http.get(link).map(i=>i.json())
+        let link = environment.api +  "query";
+        let opts = new RequestOptions();
+        let params = new URLSearchParams();
+        params.append('request','GetRecordById');
+        params.append('service','CSW-ebRIM');
+        params.append('version','1.0.1');
+        params.append('id','urn:oasis:names:tc:ebxml-regrep:classificationScheme:DataType');
+        params.append('outputFormat','application/json');
+        params.append('elementSetName','full');
+        params.append('include','all');
+        params.append('ssk','code');
+        opts.params = params;
+
+        return this._http.get(link,opts).map(i=>i.json())
             .map(i=>i.searchResults[0].classificationNodes)
             .map(i=>JSON.stringify(i))
             .do(i=>this.dataTypes=i);

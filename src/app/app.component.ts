@@ -3,6 +3,8 @@ import {TransactionService,BackboneService} from './service';
 import {SlotType,GM_PointSlot} from './slot';
 import * as xmlbuilder from 'xmlbuilder';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,14 +12,12 @@ import * as xmlbuilder from 'xmlbuilder';
 })
 export class AppComponent {
   title = 'INdicio';
-  a:XMLSerializer;
-  b:XMLDocument;
-  constructor(private test:TransactionService,private _backbone:BackboneService){
-  }
+  
+  constructor(private test:TransactionService,private _backbone:BackboneService){}
 
   ngOnInit(){
-    console.log(this._backbone.getDataTypes().subscribe());
+    this._backbone.getDataTypes().subscribe(i=>console.log('dataTypes',i));
     let slot = {name:'SomeSlot',type:SlotType.String,value:"AbuDa7em"};
-    this.test.insert('urn:auth:def:objectType:222:Vehicle3',[{lang:'ar-SA',value:'اسم عربي'},{lang:'en-US',value:'English Name'}],[slot]);
+    this.test.insert('urn:demo:def:objectType:avl:Driver',[{lang:'ar-SA',value:'اسم عربي'},{lang:'en-US',value:'English Name'}],[slot]);
   }
 }

@@ -31,9 +31,7 @@ export class TransactionService{
     delete(){
         throw new Error('Not Implemented Yet');
     }
-
-
-
+    
     /* PRIVATE METHODS, Should be moved somewhere else, may be a builder class for extrinsic object ?  */
     private addExtrinsicObject(objectType,id=''){
         return xmlbuilder.create('wrs:ExtrinsicObject').att('id','').att('objectType',objectType);
