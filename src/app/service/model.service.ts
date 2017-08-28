@@ -22,6 +22,8 @@ export class ModelService{
 
         return this._backend.query(options)
             .map(i=>i.json())
+            .map(i=>i.searchResults)
+            
             .do(i=>console.log(i))
     }
 }
