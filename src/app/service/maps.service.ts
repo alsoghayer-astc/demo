@@ -6,6 +6,7 @@ const MAP_KEY = "AIzaSyDFuPfcepAQ-wRikzeOZN_2WFf3C94RLis";
 @Injectable()
 export class MapsService{
     mapObj:google.maps.Map;
+    markers:google.maps.Marker[]=[];
     map(map:Element){
         this.mapObj = new google.maps.Map(map);
     }
@@ -16,6 +17,6 @@ export class MapsService{
     }
     addMarker(options:google.maps.MarkerOptions){
         options.map = this.mapObj;
-        new google.maps.Marker(options);
+        this.markers.push(new google.maps.Marker(options));
     }
 }

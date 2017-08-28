@@ -18,4 +18,4 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   exports: [FlexLayoutModule,MdSortModule,CdkTableModule,MdRadioModule,MdPaginatorModule,MdTableModule,MdTabsModule,MdNativeDateModule,MdCardModule,MdAutocompleteModule,MdButtonModule,MdSelectModule,MdProgressBarModule,MdTooltipModule,MdListModule,MdSidenavModule,MdDatepickerModule,MdIconModule,MdToolbarModule,MdDialogModule,MdInputModule,MdProgressSpinnerModule,MdButtonModule, MdCheckboxModule],
   declarations: []
 })
-export class MyMaterialModule {}
+export class ngMaterialModule {}

@@ -10,9 +10,9 @@ import * as xmlbuilder from 'xmlbuilder';
 export class BackendService{
     constructor(private http:Http){}
 
-    private buildOptions(){
-        let options = new RequestOptions();
-        options.headers = new Headers();
+    private buildOptions(options:RequestOptions=undefined){
+        options = options ? options: new RequestOptions();
+        options.headers = options.headers? options.headers: new Headers();
         options.headers.append("Content-Type","text/xml;charset=UTF-8");
         options.headers.append("Authorization","Basic " + btoa("admin:SlithyToves"));
         return options;
@@ -21,5 +21,8 @@ export class BackendService{
     publish(body){
         return this.http.post(environment.api +"publish",body,this.buildOptions())
             .map(i=>i.text());
+    }
+    query(requestOptions:RequestOptions){
+        return this.http.get(environment.api + "query",this.buildOptions(requestOptions));
     }
 }

@@ -2,7 +2,7 @@ import {Component,Output,EventEmitter} from '@angular/core';
 import {FormControl,FormGroup,FormArray,FormBuilder} from '@angular/forms';
 
 @Component({
-    selector:'new-user-form',
+    selector:'new-driver-form',
     template:`
     <button (click)="addNewName()" md-raised-button color="primary">Add Lang</button>
     <div [formGroup]="form">
@@ -22,7 +22,7 @@ import {FormControl,FormGroup,FormArray,FormBuilder} from '@angular/forms';
     </div>
     `
 })
-export class NewUserForm{
+export class NewDriverForm{
     form:FormGroup;
     save = new EventEmitter<any>();
     constructor(private _fb:FormBuilder){}

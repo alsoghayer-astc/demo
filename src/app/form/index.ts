@@ -1,3 +1,3 @@
-import {NewUserForm} from './newuser.form';
+import {NewDriverForm} from './newdriver.form';
 
-export const ALL_FORMS = [NewUserForm];
+export const ALL_FORMS = [NewDriverForm];
