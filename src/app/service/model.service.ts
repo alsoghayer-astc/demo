@@ -1,14 +1,22 @@
 import {Injectable} from '@angular/core';
 import {BackendService} from './backend.service'
 import {RequestOptions,URLSearchParams} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+import {ExtrinsicObject,Slot,Model,Association} from '../model';
+
+const EXTRINSIC_OBJECT_TYPE = "urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExtrinsicObject";
+const ASSOCIATION_TYPE = "urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Association";
 
 @Injectable()
 export class ModelService{
+    models:Model[] = [];
+    
     constructor(private _backend:BackendService){
-        this.fetchModel().subscribe(); //TESTING ONLY
+        this.fetchAllModels()
+            .subscribe(i=>console.log(this.models)); //TESTING ONLY
     }
 
-    private fetchModel(){
+    private fetchAllModels(){
         let options = new RequestOptions();
         options.params = new URLSearchParams();
         options.params.append('request','Query'); 
@@ -23,7 +31,51 @@ export class ModelService{
         return this._backend.query(options)
             .map(i=>i.json())
             .map(i=>i.searchResults)
-            
-            .do(i=>console.log(i))
+            .flatMap(i=>Observable.from(i)) 
+            .flatMap((i:any)=>this.fetchModel(i.id))
+            .do(i=>this.buildModel(i))
+    }
+
+    private fetchModel(id:string){
+        let options = new RequestOptions();
+        options.params = new URLSearchParams();
+        options.params.append('request','GetRepositoryItem'); 
+        options.params.append('service','CSW-ebRIM'); 
+        options.params.append('id',id);
+
+        return this._backend.query(options)
+        .map(i=>i.json());
+    }
+
+    private buildModel(model:any){
+        let md = model.root.metadata;
+
+        let modelObj = new Model(md.id,md.name,md.authorityCode,md.description,md.modelCode,md.modelVersion,md.language);
+        
+        for(let c of model.root.constraints){
+            if(c.constraint.supertype == EXTRINSIC_OBJECT_TYPE)
+                modelObj.extrinsicObjects.push(this.buildExtrinsicObject(c.constraint));
+            else if(c.constraint.type == ASSOCIATION_TYPE)
+                modelObj.associations.push(this.buildAssociation(c.constraint));
+        }
+        this.models.push(modelObj);
+    }
+
+    private buildExtrinsicObject(object){
+        let slots:Slot[] = this.buildSlots(object.slots);
+        
+        return new ExtrinsicObject(object.type,object.supertype,slots,object.reqProps.map(i=>i.propName));
+    }
+
+    private buildAssociation(association){
+        return new Association(association.type,association.source,association.target,this.buildSlots(association.slots));
+    }
+    private buildSlots(rawSlots){
+        let slots:Slot[] = [];
+        for(let slot of rawSlots){
+            let s = new Slot(slot.dataType,slot.id,slot.cardinality,slot.defaultValue);
+            slots.push(s);
+        }
+        return slots;
     }
 }
