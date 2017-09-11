@@ -9,7 +9,7 @@ import {MdCardModule, MdToolbarModule, MdDialogModule, MdButtonModule,
         DateAdapter,NativeDateAdapter,MD_DATE_FORMATS
       }  from '@angular/material';
 
-import {CdkTableModule} from '@angular/cdk';
+import {CdkTableModule} from '@angular/cdk/table';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
