@@ -29,3 +29,9 @@ html, body{
     margin:0px;
     height:100%;
 }
+
+.mat-sidenav{
+    background-color: mat-color($app-primary);
+    font-weight: 900;
+    color:  mat-color($app-accent);
+}

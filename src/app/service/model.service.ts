@@ -9,14 +9,18 @@ const ASSOCIATION_TYPE = "urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObj
 
 @Injectable()
 export class ModelService{
-    models:Model[] = [];
+    models:Model[] = undefined;
     
     constructor(private _backend:BackendService){
         this.fetchAllModels()
-            .subscribe(i=>console.log(this.models)); //TESTING ONLY
+            .subscribe(); //TESTING ONLY
     }
 
-    private fetchAllModels(){
+    getAllModels(){
+        return this.models? Observable.from(this.models):this.fetchAllModels();
+    }
+
+    private fetchAllModels():Observable<Model>{
         let options = new RequestOptions();
         options.params = new URLSearchParams();
         options.params.append('request','Query'); 
@@ -29,11 +33,12 @@ export class ModelService{
         options.params.append('type','urn:x-indicio:def:ebrim:ObjectType:Model');
 
         return this._backend.query(options)
+            .do(i=>this.models = [])
             .map(i=>i.json())
             .map(i=>i.searchResults)
             .flatMap(i=>Observable.from(i)) 
             .flatMap((i:any)=>this.fetchModel(i.id))
-            .do(i=>this.buildModel(i))
+            .map(i=>this.buildModel(i))
     }
 
     private fetchModel(id:string){
@@ -59,6 +64,7 @@ export class ModelService{
                 modelObj.associations.push(this.buildAssociation(c.constraint));
         }
         this.models.push(modelObj);
+        return modelObj;
     }
 
     private buildExtrinsicObject(object){

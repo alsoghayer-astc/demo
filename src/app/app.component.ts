@@ -13,10 +13,12 @@ const MODEL_URN = "urn:demo:def:objectType:avl:";
 })
 export class AppComponent {
   title = 'INdicio';
-  constructor(private _modelService:ModelService,private test:TransactionService,private _backbone:BackboneService){}
+  constructor(private _modelService:ModelService,private _transaction:TransactionService,private _backbone:BackboneService){}
 
   ngOnInit(){
-    // this._backbone.getDataTypes().subscribe(i=>console.log('dataTypes',i));
+    console.log('hello there')
+    this._modelService.getAllModels().subscribe(i=>console.log('model found .. ',i))
+    //this._backbone.getDataTypes().subscribe(i=>console.log('dataTypes',i));
     // let slot = {name:'SomeSlot',type:SlotType.String,value:"AbuDa7em"};
     // this.test.insert('urn:demo:def:objectType:avl:Driver',[{lang:'ar-SA',value:'اسم عربي'},{lang:'en-US',value:'English Name'}],[slot]);
   }
